@@ -3,7 +3,7 @@
 
     <div *ngFor="let i of imagesForDownload" class="col-lg-3">
       <form #form="ngForm" (ngSubmit)="sendForm(form)">
-        <input ngModel name="check" type="checkbox">
+        <input ngModel name="check" type="checkbox" style="display: block; margin: 0 auto">
         <img ngModel name="image" ngDefaultControl class="imgForLoad" [src]="i" alt="">
         <button class="btn btn-success" type="submit">Download</button>
       </form>
