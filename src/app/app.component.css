@@ -1,12 +1,13 @@
 .main {
-  margin: 100px auto;
+  margin: 50px auto;
   border: 1px solid black;
   width: 800px;
   text-align: center;
 }
 
-.inp{
+.inp {
   margin-top: 20px;
+  text-align: center;
 }
 
 .functions {
@@ -14,27 +15,24 @@
 }
 
 .img {
-  height: 100px;
-  width: 100px;
+  width: 600px;
+  height: 600px;
   border: 1px solid black;
 }
 
 .row {
-  margin-top: 100px;
+  margin-top: 50px;
   text-align: center;
 }
 
-.btn-danger {
-  background: none;
-  color: red;
-}
 
 .buttons {
-  margin-top: 20px;
+  margin: 5px auto;
+  display: block;
 }
 
 .btn {
-  width: 120px;
+  width: 100px;
   border: 1px solid black;
 }
 
@@ -61,8 +59,8 @@
 
 .modal-content {
   border-radius: 0;
-  width: 100px;
-  min-height: 100px;
+  width: 600px;
+  min-height: 600px;
   background: white;
 }
 
@@ -77,17 +75,20 @@
   width: 15%;
 }
 
-#close:hover{
-  background: rgba(99,99,99,0.77);
+#close:hover {
+  background: rgba(99, 99, 99, 0.77);
 }
 
-#close>span{
+#close > span {
   float: right;
   margin-right: 10px;
 }
 
-.imgForLoad{
-  width: 200px;
-  height: 200px;
+.imgForLoad {
+  width: 100px;
+  height: 100px;
+}
+.buttons>.btn{
+  width: 50px;
 }
 

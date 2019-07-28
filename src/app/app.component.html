@@ -1,45 +1,41 @@
-<div class="container forDownload">
+<div class="container">
+  <h1 style="text-align: center">Preview</h1>
+  <h6 style="text-align: center">Please, enter the URL of your image. Then you ll be able to add owned pictures into
+    your list which you can download</h6>
   <div class="row">
-
     <div *ngFor="let i of images" class="col-lg-3">
-      <form #form="ngForm" (ngSubmit)="sendForm(form)">
-        <input  ngModel name="check" type="checkbox" style="display: block; margin: 0 auto">
-        <img   ngModel name="image" ngDefaultControl id="imgD" class="imgForLoad" [src]="i" alt="">
-        <input ngModel name="text" type="text">
-        <input class="btn btn-success" type="submit">
-      </form>
-    </div>
+      <img  ngDefaultControl id="imgD" class="imgForLoad" [src]="i" alt="">
+      <div class="buttons">
+        <button class="btn btn-success" (click)="add(i)">Add</button>
 
-  </div>
-  <div class="container main">
-    <div class="buttons">
-      <button type="button" class="btn btn-success all" (click)="download()">Download All</button>
+      </div>
     </div>
+  </div>
     <div class="inp">
-      <label><input (input)="getUrl($event)" type="text"
+      <label>Your URL-------> <input (input)="getUrl($event)" type="text"
                     onfocus="this.value=''" placeholder="URL"></label>
     </div>
-    <!--<form [formGroup]="inputForm" class="functions">-->
-    <!--<div formArrayName="inputs">-->
-    <!--<div *ngFor="let item of inputPoints.controls; let pointIndex=index" [formGroupName]="pointIndex">-->
-    <!--<label><img alt=""><input formControlName="url" (input)="getUrl($event, pointIndex+1)" type="text"-->
-    <!--onfocus="this.value=''" placeholder="URL"></label>-->
-    <!--<button type="button" class="btn btn-danger" (click)="deleteInput(pointIndex)">Delete</button>-->
-    <!--<button type="button" class="btn btn-success" (click)="download(pointIndex)">Download</button>-->
-    <!--</div>-->
+  </div>
 
-    <!--</div>-->
-    <!--</form>-->
+<div class="container main">
+  <h1 style="text-align: center">Your owned pictures</h1>
+  <button type="submit" class="btn btn-success all" (click)="download()">Download</button>
+  <div class="row">
+    <div *ngFor="let i of imagesForDownload" class="col-lg-3">
+      <div class="buttons">
+      <button class="btn btn-danger" (click)="delete(i)">Del</button>
+      </div>
+      <img ngDefaultControl class="imgForLoad" [src]="i" alt="">
+    </div>
   </div>
 </div>
 
-
-<div class="bg-modal">
-  <a id="close" (click)="close()"><span>x</span></a>
-  <div class="modal-content">
-    <img class="img" [src]="currentImg.image" alt="">
-  </div>
-</div>
+    <div class="bg-modal">
+      <a id="close" (click)="close()"><span>x</span></a>
+      <div class="modal-content">
+        <img class="img" [src]="image" alt="">
+      </div>
+    </div>
 
 
 

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, FormArray, FormControl, NgForm} from '@angular/forms';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -12,49 +12,24 @@ export class AppComponent implements OnInit {
   constructor() {
   }
 
-  // imagesForDownload: string[] = [];
-  // image = '';
-  // inputForm: FormGroup;
-  // inputs: Input[];
-  images: Image[] = [];
-  currentImg: Image = new Image();
-
+  images: string[] = [];
+  imagesForDownload: string[] = [];
+  image = '';
+  added = false;
 
   ngOnInit(): void {
 
-
-    // this.inputForm = this.fb.group({
-    //   inputs: this.fb.array([this.fb.group({url: ''})])
-    // });
   }
 
-
-  // get inputPoints() {
-  //   return this.inputForm.get('inputs') as FormArray;
-  // }
-  //
-  // addInput() {
-  //   this.inputPoints.push(this.fb.group({url: ''}));
-  // }
-
-  // deleteInput(index) {
-  //   this.inputPoints.removeAt(index);
-  // }
-
   getUrl($event) {
-    this.currentImg.image = $event.target.value;
-    console.log(this.currentImg);
-    setTimeout(() => {
-      this.images.push(this.currentImg);
-    }, 400);
-    for (let i = 0; i < this.images.length; i++) {
-
-    }
+    this.image = $event.target.value;
+    this.images.push(this.image);
     (document.querySelector('.bg-modal') as HTMLElement).style.display = 'flex';
   }
 
 
   download() {
+    console.log(this.imagesForDownload);
 
   }
 
@@ -63,22 +38,20 @@ export class AppComponent implements OnInit {
   }
 
 
-  sendForm(form: NgForm, i: string) {
-    // for (let i = 0; i < this.imagesForDownload.length; i++) {
-    //   console.log(this.imagesForDownload[i]);
-    //
-    // }
-    // console.log((document.querySelector('.imgForLoad') as HTMLElement).valueOf());
-    // console.log(document.getElementById('imgD').getAttribute('src'));
-    console.log(form);
+  add(image: string) {
+    this.imagesForDownload.push(image);
+  }
+
+  delete(image: string) {
+    for (let i = 0; i < this.imagesForDownload.length; i++) {
+      if (this.imagesForDownload[i] === image) {
+        this.imagesForDownload[i] = this.imagesForDownload[0];
+        this.imagesForDownload.shift();
+        this.added = false;
+      }
+    }
   }
 }
-
-export class Image {
-  // public id: number = null;
-  public image = '';
-}
-
 
 
 
