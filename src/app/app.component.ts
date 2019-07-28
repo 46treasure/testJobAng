@@ -12,10 +12,13 @@ export class AppComponent implements OnInit {
   constructor() {
   }
 
-  imagesForDownload: string[] = [];
-  image = '';
+  // imagesForDownload: string[] = [];
+  // image = '';
   // inputForm: FormGroup;
   // inputs: Input[];
+  images: Image[] = [];
+  currentImg: Image = new Image();
+
 
   ngOnInit(): void {
 
@@ -39,13 +42,20 @@ export class AppComponent implements OnInit {
   // }
 
   getUrl($event) {
-    this.image = $event.target.value;
-    this.imagesForDownload.push(this.image);
+    this.currentImg.image = $event.target.value;
+    console.log(this.currentImg);
+    setTimeout(() => {
+      this.images.push(this.currentImg);
+    }, 400);
+    for (let i = 0; i < this.images.length; i++) {
+
+    }
     (document.querySelector('.bg-modal') as HTMLElement).style.display = 'flex';
   }
 
 
   download() {
+
   }
 
   close() {
@@ -53,10 +63,20 @@ export class AppComponent implements OnInit {
   }
 
 
-  sendForm(form: NgForm) {
-    console.log(this.imagesForDownload);
-    console.log(form.value);
+  sendForm(form: NgForm, i: string) {
+    // for (let i = 0; i < this.imagesForDownload.length; i++) {
+    //   console.log(this.imagesForDownload[i]);
+    //
+    // }
+    // console.log((document.querySelector('.imgForLoad') as HTMLElement).valueOf());
+    // console.log(document.getElementById('imgD').getAttribute('src'));
+    console.log(form);
   }
+}
+
+export class Image {
+  // public id: number = null;
+  public image = '';
 }
 
 
