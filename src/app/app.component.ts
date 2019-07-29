@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
+import {DownloadService} from '../services/download.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import {NgForm} from '@angular/forms';
 export class AppComponent implements OnInit {
 
 
-  constructor() {
+  constructor(private dS: DownloadService) {
   }
 
   images: string[] = [];
@@ -28,10 +29,11 @@ export class AppComponent implements OnInit {
   }
 
 
-  download() {
+  load() {
     console.log(this.imagesForDownload);
-
+    this.dS.download(this.imagesForDownload).subscribe();
   }
+
 
   close() {
     (document.querySelector('.bg-modal') as HTMLElement).style.display = 'none';
