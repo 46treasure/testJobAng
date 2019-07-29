@@ -24,14 +24,16 @@ export class AppComponent implements OnInit {
     } else {
       this.showButton = true;
     }
-    console.log(this.showButton);
-    console.log(this.imagesForDownload);
   }
 
   getUrl($event) {
-    this.image = $event.target.value;
-    this.images.push(this.image);
-    (document.querySelector('.bg-modal') as HTMLElement).style.display = 'flex';
+    if ($event.target.value.startsWith('http')) {
+      this.image = $event.target.value;
+      this.images.push(this.image);
+      (document.querySelector('.bg-modal') as HTMLElement).style.display = 'flex';
+    } else {
+      alert('Invalid URL');
+    }
   }
 
 
@@ -50,7 +52,6 @@ export class AppComponent implements OnInit {
   add(image: string) {
     this.imagesForDownload.push(image);
     this.showButton = true;
-    console.log(this.showButton);
   }
 
   delete(image: string) {
