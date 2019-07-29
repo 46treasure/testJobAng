@@ -19,7 +19,7 @@
 
 <div class="container main">
   <h1 style="text-align: center">Your owned pictures</h1>
-  <button type="submit" class="btn btn-success all" (click)="load(imagesForDownload)">Download</button>
+  <button *ngIf="showButton === true" type="submit" class="btn btn-success all" (click)="load(imagesForDownload)">Download</button>
   <div class="row">
     <div *ngFor="let i of imagesForDownload" class="col-lg-3">
       <div class="buttons">

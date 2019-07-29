@@ -16,10 +16,16 @@ export class AppComponent implements OnInit {
   images: string[] = [];
   imagesForDownload: string[] = [];
   image = '';
-  added = false;
+  showButton = false;
 
   ngOnInit(): void {
-
+    if (this.imagesForDownload.length === 0) {
+      this.showButton = false;
+    } else {
+      this.showButton = true;
+    }
+    console.log(this.showButton);
+    console.log(this.imagesForDownload);
   }
 
   getUrl($event) {
@@ -32,6 +38,7 @@ export class AppComponent implements OnInit {
   load() {
     console.log(this.imagesForDownload);
     this.dS.download(this.imagesForDownload).subscribe();
+    alert('Downloaded on your desktop');
   }
 
 
@@ -42,6 +49,8 @@ export class AppComponent implements OnInit {
 
   add(image: string) {
     this.imagesForDownload.push(image);
+    this.showButton = true;
+    console.log(this.showButton);
   }
 
   delete(image: string) {
@@ -49,8 +58,8 @@ export class AppComponent implements OnInit {
       if (this.imagesForDownload[i] === image) {
         this.imagesForDownload[i] = this.imagesForDownload[0];
         this.imagesForDownload.shift();
-        this.added = false;
       }
+      this.ngOnInit();
     }
   }
 }
